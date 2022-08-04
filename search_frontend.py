@@ -40,7 +40,6 @@ import statistics
 ##avg_views_values = statistics.mean(list(page_rank_dict.values()))
 ##avg_rank_values = statistics.mean(list(page_views.values()))
 
-### code from Assignment 4 ###
 
 words_text, pls = zip(*body_index.posting_lists_iter())
 print("built and opened all files")
@@ -141,18 +140,12 @@ def merge_results(title_scores, body_scores, anchor_scores, anchor_weight=0.33, 
     while (anchor_continue + text_continue + title_continue) > 1:  # if only one continue, quit while
         # title stats
         if title_continue:
-            # curr_rank_title = (rank_weight * (page_rank_dict[title_scores[ind_title][0]]) / avg_rank_values)
-            # curr_views_title = (view_weight * (page_views[title_scores[ind_title][0]]) / avg_views_values)
             curr_title = ((title_length - ind_title) * title_weight)# * (curr_rank_title + curr_views_title)
         # text/body stats
         if text_continue:
-            # curr_rank_text = (rank_weight * (page_rank_dict[body_scores[ind_text][0]]) / avg_rank_values)
-            # curr_views_text = (view_weight * (page_views[body_scores[ind_text][0]]) / avg_views_values)
             curr_text = ((text_length - ind_text) * text_weight)# * (curr_rank_text + curr_views_text)
         # anchor stats
         if anchor_continue:
-            # curr_rank_anchor = (rank_weight * (page_rank_dict[anchor_scores[ind_anchor][0]]) / avg_rank_values)
-            # curr_views_anchor = (view_weight * (page_views[anchor_scores[ind_anchor][0]]) / avg_views_values)
             curr_anchor = ((anchor_length - ind_anchor) * anchor_weight)# * (curr_rank_anchor + curr_views_anchor)
         # pick one to add
         if anchor_continue == True and text_continue == True and title_continue == True:
@@ -226,19 +219,6 @@ def search():
         list of up to 100 search results, ordered from best to worst where each 
         element is a tuple (wiki_id, title).
     '''
-    # res = []
-    # query = request.args.get('query', '')
-    # print(query)
-    # if len(query) == 0:
-    #     return jsonify(res)
-    # # BEGIN SOLUTION
-
-    # # END SOLUTION
-    # return jsonify(res)
-
-
-
-    ### barak solution
     res = []
     query = request.args.get('query', '')
     global search_flag
